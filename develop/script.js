@@ -15,6 +15,8 @@ function getUserInput() {
         console.log("Please choose a muscle group");
     } else if (difficultyType === "Difficulty") {
         console.log("please choose a difficulty level");
+    } else {
+        getWorkouts();
     }
 }
 
