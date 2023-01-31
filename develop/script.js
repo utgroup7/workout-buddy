@@ -39,6 +39,17 @@ function getWorkouts() {
     })
     .then(function (data) {
         console.log(data);
+
+        for (var i=0; i<8; i++) {
+            var exerciseName = data[i].name;
+            var exerciseDifficulty = data[i].difficulty;
+            var exerciseMuscle = data[i].muscle;
+            var exerciseEquipment = data[i].equipment;
+            var exerciseType = data[i].type;
+            var exerciseInstructions = data[i].instructions;
+
+            
+        }
     });
 }
 
