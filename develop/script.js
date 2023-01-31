@@ -16,7 +16,15 @@ function getUserInput() {
         console.log("Please choose at least one option");
         return;
     }
+    clearCards();
+    // clear local storage
     getWorkouts();
+}
+
+function clearCards() {
+    while (exerciseDisplay.firstChild) {
+        exerciseDisplay.removeChild(exerciseDisplay.firstChild);
+    }
 }
 
 function getWorkouts() {
@@ -40,6 +48,7 @@ function getWorkouts() {
     })
     .then(function (data) {
         console.log(data);
+
 
         for (var i=0; i<8; i++) {
             // create variables for API data
