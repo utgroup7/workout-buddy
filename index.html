@@ -10,6 +10,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="./develop/style.css"/>
     <title>Workout Pal</title>
 </head>
 <body>
@@ -25,7 +26,7 @@
         <br>
         <div class="row d-flex">
             <div class="col-12 col-lg-4 mb-5 mt-5">
-                <select class="form-select " aria-label="Default select example">
+                <select id="exercise-sel" class="form-select " aria-label="Default select example">
                     <option selected>Exercise Type</option>
                     <option value="cardio">Cardio</option>
                     <option value="olympic_weightlifting">Olympic Weightlifting</option>
@@ -36,7 +37,7 @@
                   </select>
             </div>
             <div class="col-12 col-lg-4 mb-5 mt-5">
-                <select class="form-select" aria-label="Default select example">
+                <select id="muscle-sel" class="form-select" aria-label="Default select example">
                     <option selected>Muscle Group</option>
                     <option value="biceps">Biceps</option>
                     <option value="calves">Calves</option>
@@ -52,12 +53,10 @@
                   </select>
             </div>
                   <div class="col-12 col-lg-4 mb-5 mt-5">
-                    <select class="form-select" aria-label="Default select example">
+                    <select id="difficulty-sel" class="form-select" aria-label="Default select example">
                         <option selected>Difficulty</option>
-                        <option value="beginner">beginner</option>
-                        <option value="intermediate">intermediate</option>
                         <option value="beginner">Beginner</option>
-                        <option value="intermediate">Intermediate</option>
+                        <option value="intermediate">intermediate</option>
                         <option value="expert">Expert</option>
                       </select>
                   </div>
@@ -68,12 +67,12 @@
                   <hr />
                   <div>
                     <div class="input-group mb-3 mt-5">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon1">Submit</button>
+                        <button class="btn btn-outline-secondary" type="button" id="submit-btn">Submit</button>
                         <input type="text" class="form-control" placeholder="Input city to check if weather permits outdoor activities" aria-label="Example text with button addon" aria-describedby="button-addon1">
                       </div>
                   </div>
         </div>
       </div>
-    
+    <script src="./develop/script.js"></script>
 </body>
 </html>
