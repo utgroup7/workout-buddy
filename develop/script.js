@@ -9,17 +9,30 @@ var exerciseType = "";
 var muscleType = "";
 var difficultyType = "";
 
+// loads local storage on refresh
+function LoadStorage () {
+    var savedWorkouts = JSON.parse(localStorage.getItem("savedWorkouts")) || [];
 
-function getExercises() {
-    clearCards();
-    resetLocalStorage();
-    getApi();
+    if (savedWorkouts != "") {
+        exerciseType = savedWorkouts[0].exercise;
+        muscleType = savedWorkouts[0].muscle;
+        difficultyType = savedWorkouts[0].difficulty;
+        getApi();
+    };
 }
 
+// run functions to clear cards, get inputs and then call API
 function getExercises () {
     clearCards();
     getUserInput();
     getApi();
+}
+
+// clears existing cards
+function clearCards() {
+    while (exerciseDisplay.firstChild) {
+        exerciseDisplay.removeChild(exerciseDisplay.firstChild);
+    }
 }
 
 // verifies userInputs from dropdown menu
@@ -32,14 +45,18 @@ function getUserInput() {
         console.log("Please choose at least one option");
         return;
     }
+    saveLocalStorage();
 }
 
-
-// clears existing cards
-function clearCards() {
-    while (exerciseDisplay.firstChild) {
-        exerciseDisplay.removeChild(exerciseDisplay.firstChild);
-    }
+function saveLocalStorage() {
+    var savedWorkouts = [
+        {
+            exercise: exerciseType,
+            muscle: muscleType,
+            difficulty: difficultyType,
+        }
+    ]
+    localStorage.setItem("savedWorkouts", JSON.stringify(savedWorkouts));
 }
 
 // resets local storage
@@ -107,9 +124,6 @@ function getApi() {
     });
 }
 
-// loads storage 
-function LoadStorage () {
 
-}
-
+LoadStorage();
 submitBtnEl.addEventListener("click", getExercises);
