@@ -4,6 +4,7 @@ var muscleChoiceEl = document.getElementById("muscle-sel");
 var difficultyChoiceEl = document.getElementById("difficulty-sel");
 var submitBtnEl = document.getElementById("submit-btn");
 var exercisesAPIKey = "k+TTZg5W7abWENrPVaEK3A==zHLpPbG3n2YNutwf";
+var exerciseDisplay = document.getElementById("exercise-container");
 
 // get user inputs from dropdown options
 function getUserInput() {
@@ -41,6 +42,7 @@ function getWorkouts() {
         console.log(data);
 
         for (var i=0; i<8; i++) {
+            // create variables for API data
             var exerciseName = data[i].name;
             var exerciseDifficulty = data[i].difficulty;
             var exerciseMuscle = data[i].muscle;
@@ -48,7 +50,31 @@ function getWorkouts() {
             var exerciseType = data[i].type;
             var exerciseInstructions = data[i].instructions;
 
-            
+            // create boxes for exercises
+            var exerciseCard = document.createElement("div")
+            var cardName = document.createElement("p4");
+            var cardDifficulty = document.createElement("p");
+            var cardMuscle = document.createElement("p");
+            var cardEquipment = document.createElement("p");
+            var cardType = document.createElement("p");
+            var cardInstuctions = document.createElement("p");
+
+            // append text to card, and card to container
+            exerciseCard.appendChild(cardName);
+            exerciseCard.appendChild(cardDifficulty);
+            exerciseCard.appendChild(cardMuscle);
+            exerciseCard.appendChild(cardEquipment);
+            exerciseCard.appendChild(cardType);
+            exerciseCard.appendChild(cardInstuctions);
+            exerciseDisplay.appendChild(exerciseCard);
+
+            // add text from API to created elements
+            cardName.textContent = exerciseName;
+            cardDifficulty.textContent = "Difficulty: " + exerciseDifficulty;
+            cardMuscle.textContent = "Muscle group: " + exerciseMuscle;
+            cardEquipment.textContent = "Equipment required: " + exerciseEquipment;
+            cardType.textContent = "Type: " + exerciseType;
+            cardInstuctions.textContent = "Instructions: " + exerciseInstructions;
         }
     });
 }
