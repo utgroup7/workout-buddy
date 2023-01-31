@@ -5,34 +5,53 @@ var difficultyChoiceEl = document.getElementById("difficulty-sel");
 var submitBtnEl = document.getElementById("submit-btn");
 var exercisesAPIKey = "k+TTZg5W7abWENrPVaEK3A==zHLpPbG3n2YNutwf";
 var exerciseDisplay = document.getElementById("exercise-container");
+var exerciseType = "";
+var muscleType = "";
+var difficultyType = "";
 
-// get user inputs from dropdown options
+
+function getExercises() {
+    clearCards();
+    resetLocalStorage();
+    getApi();
+}
+
+function getExercises () {
+    clearCards();
+    getUserInput();
+    getApi();
+}
+
+// verifies userInputs from dropdown menu
 function getUserInput() {
-    var exerciseType = exerciseChoiceEl.options[exerciseChoiceEl.selectedIndex].text;
-    var muscleType = muscleChoiceEl.options[muscleChoiceEl.selectedIndex].text;
-    var difficultyType = difficultyChoiceEl.options[difficultyChoiceEl.selectedIndex].text;
+    exerciseType = exerciseChoiceEl.options[exerciseChoiceEl.selectedIndex].text;
+    muscleType = muscleChoiceEl.options[muscleChoiceEl.selectedIndex].text;
+    difficultyType = difficultyChoiceEl.options[difficultyChoiceEl.selectedIndex].text;
     // functionality to check if all options are selected
     if (exerciseType === "" && muscleType === "" && difficultyType === "") {
         console.log("Please choose at least one option");
         return;
     }
-    clearCards();
-    // clear local storage
-    getWorkouts();
 }
 
+
+// clears existing cards
 function clearCards() {
     while (exerciseDisplay.firstChild) {
         exerciseDisplay.removeChild(exerciseDisplay.firstChild);
     }
 }
 
-function getWorkouts() {
-    var exerciseType = exerciseChoiceEl.options[exerciseChoiceEl.selectedIndex].text;
-    var muscleType = muscleChoiceEl.options[muscleChoiceEl.selectedIndex].text;
-    var difficultyType = difficultyChoiceEl.options[difficultyChoiceEl.selectedIndex].text;
+// resets local storage
+function resetLocalStorage () {
+    localStorage.clear();
+}
+
+function getApi() {
+    // takes selected options, and puts them into API call
     var requestUrl = "https://api.api-ninjas.com/v1/exercises?&type=" + exerciseType + "&muscle=" + muscleType + "&difficulty=" + difficultyType
 
+    // fetch data with API key
     fetch(requestUrl, {
         headers: {
             'X-API-Key': exercisesAPIKey
@@ -49,7 +68,7 @@ function getWorkouts() {
     .then(function (data) {
         console.log(data);
 
-
+        // loop through 8 results, and display them
         for (var i=0; i<8; i++) {
             // create variables for API data
             var exerciseName = data[i].name;
@@ -88,4 +107,9 @@ function getWorkouts() {
     });
 }
 
-submitBtnEl.addEventListener("click", getUserInput);
+// loads storage 
+function LoadStorage () {
+
+}
+
+submitBtnEl.addEventListener("click", getExercises);
