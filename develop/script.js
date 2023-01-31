@@ -37,9 +37,9 @@ function clearCards() {
 
 // verifies userInputs from dropdown menu
 function getUserInput() {
-    exerciseType = exerciseChoiceEl.options[exerciseChoiceEl.selectedIndex].text;
-    muscleType = muscleChoiceEl.options[muscleChoiceEl.selectedIndex].text;
-    difficultyType = difficultyChoiceEl.options[difficultyChoiceEl.selectedIndex].text;
+    exerciseType = exerciseChoiceEl.options[exerciseChoiceEl.selectedIndex].text.split(' ').join('_');
+    muscleType = muscleChoiceEl.options[muscleChoiceEl.selectedIndex].text.split(' ').join('_');
+    difficultyType = difficultyChoiceEl.options[difficultyChoiceEl.selectedIndex].text.split(' ').join('_');
     // functionality to check if all options are selected
     if (exerciseType === "" && muscleType === "" && difficultyType === "") {
         console.log("Please choose at least one option");
@@ -48,6 +48,7 @@ function getUserInput() {
     saveLocalStorage();
 }
 
+// save to local storage
 function saveLocalStorage() {
     var savedWorkouts = [
         {
