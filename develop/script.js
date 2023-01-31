@@ -5,22 +5,23 @@ var difficultyChoiceEl = document.getElementById("difficulty-sel");
 var submitBtnEl = document.getElementById("submit-btn");
 var exercisesAPIKey = "k+TTZg5W7abWENrPVaEK3A==zHLpPbG3n2YNutwf";
 
+// get user inputs from dropdown options
 function getUserInput() {
     var exerciseType = exerciseChoiceEl.options[exerciseChoiceEl.selectedIndex].text;
     var muscleType = muscleChoiceEl.options[muscleChoiceEl.selectedIndex].text;
     var difficultyType = difficultyChoiceEl.options[difficultyChoiceEl.selectedIndex].text;
-    if (exerciseType === "Exercise Type") {
-        console.log("Please choose an exercise Type");
-    } else if (muscleType === "Muscle Group") {
-        console.log("Please choose a muscle group");
-    } else if (difficultyType === "Difficulty") {
-        console.log("please choose a difficulty level");
-    } else {
-        getWorkouts();
+    // functionality to check if all options are selected
+    if (exerciseType === "" && muscleType === "" && difficultyType === "") {
+        console.log("Please choose at least one option");
+        return;
     }
+    getWorkouts();
 }
 
 function getWorkouts() {
+    var exerciseType = exerciseChoiceEl.options[exerciseChoiceEl.selectedIndex].text;
+    var muscleType = muscleChoiceEl.options[muscleChoiceEl.selectedIndex].text;
+    var difficultyType = difficultyChoiceEl.options[difficultyChoiceEl.selectedIndex].text;
     var requestUrl = "https://api.api-ninjas.com/v1/exercises?&type=" + exerciseType + "&muscle=" + muscleType + "&difficulty=" + difficultyType
 
     fetch(requestUrl, {
