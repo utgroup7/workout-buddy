@@ -140,19 +140,21 @@ function getApi() {
 }
 
 LoadStorage();
+
 submitBtnEl.addEventListener("click", function () {
   getExercises;
   fetchweather();
 });
 
 //fetch openweather
-//var whichcity;
-//whichcity = document.querySelector(".cityname").value.trim();
-//whichcity = whichcity[0].toUpperCase() + whichcity.slice(1);
+
 function fetchweather() {
+  var whichcity;
+  whichcity = document.querySelector(".cityname").value.trim();
+  whichcity = whichcity[0].toUpperCase() + whichcity.slice(1);
   fetch(
     "https://api.openweathermap.org/data/2.5/weather?q=" +
-      "toronto" +
+      whichcity +
       //api key
       "&appid=1c1db37f109216f4015898ae7bfc7c96"
   )
@@ -178,9 +180,11 @@ function fetchweather() {
             data.weather[0].icon +
             "@2x.png"
         );
-        if (data.weather[0].main == "Rain" || "Snow") {
+        if (data.weather[0].main == "Rain" || data.weather[0].main == "Snow") {
           $(".gym-or-outside").html("Go to the gym");
-        } else $(".gym-or-outside").html("Go out for exercise!!");
+        } else {
+          $(".gym-or-outside").html("Go out for exercise!!");
+        }
       }
     });
 }
