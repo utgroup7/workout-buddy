@@ -1,0 +1,55 @@
+* {
+  padding: 5px;
+}
+/*initial page setting*/
+.page1 {
+  display: block;
+}
+.page2 {
+  display: none;
+}
+/*setting's for return button in page 2*/
+.returnbtn {
+  background-color: rgb(7, 124, 241);
+  color: aliceblue;
+  margin: 15px;
+  width: 10%;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: 0px;
+}
+/*adjust the style for reult boxes*/
+#exercise-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  justify-content: space-around;
+  background-color: rgb(32, 144, 235);
+}
+#exercise-container div {
+  display: inline-block;
+  font-weight: bold;
+  margin: 10px;
+  padding-right: 50px;
+  max-width: 45%;
+  max-height: 45%;
+  border: 3px solid black;
+  background-color: white;
+}
+#exercise-container div p4 {
+  font-weight: bold;
+  font-size: 20px;
+  background-color: rgb(42, 235, 193);
+  border: 3px solid black;
+  padding-top: 2px;
+}
+/*settings for dialog window*/
+#dialog {
+  background-color: aliceblue;
+}
+.search-city {
+  font-weight: bold;
+  font-size: 25px;
+}
+/**/
