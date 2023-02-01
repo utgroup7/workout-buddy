@@ -10,6 +10,8 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link rel="stylesheet" href="./develop/style.css"/>
     <title>Workout Pal</title>
 </head>
@@ -71,15 +73,25 @@
             <div>
               <div class="input-group mb-3 mt-5">
                   <button class="btn btn-outline-secondary" type="button" id="submit-btn">Submit</button>
-                  <input type="text" class="form-control" placeholder="Input city to check if weather permits outdoor activities" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                  <input type="text" class="form-control cityname" placeholder="Input city to check if weather permits outdoor activities" aria-label="Example text with button addon" aria-describedby="button-addon1">
                 </div>
             </div>
           </div>
       </div>
+      <div class="page2">
       <div id="exercise-container">
         <h2>Exercises:</h2>
         <!-- created exercises will go here -->
       </div>
+      <div class="weatherpart">
+        <div class="search-city"></div>
+        <div class="date"></div>
+        <div class="todayweather"></div>
+        <img class="weathericon"></img>
+        <div class="gym-or-outside"></div>
+      </div>
+      
+    </div>
     <script src="./develop/script.js"></script>
 </body>
 </html>
