@@ -19,7 +19,7 @@
   cursor: pointer;
   margin-left: 0px;
 }
-/*adjust the style for reult boxes*/
+/*adjust the style for result boxes*/
 #exercise-container {
   display: flex;
   flex-wrap: wrap;
