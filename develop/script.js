@@ -132,10 +132,6 @@ function getApi() {
 }
 
 LoadStorage();
-submitBtnEl.addEventListener("click", function () {
-  getExercises();
-  fetchweather();
-});
 
 function fetchweather() {
   var whichcity;
@@ -170,10 +166,40 @@ function fetchweather() {
             "@2x.png"
         );
         if (data.weather[0].main == "Rain" || data.weather[0].main == "Snow") {
-          $(".gym-or-outside").html("Go to the gym");
+          $(".gym-or-outside").css("font-weight", "bold").html("Go to the gym");
         } else {
-          $(".gym-or-outside").html("Go out for exercise!!");
+          $(".gym-or-outside")
+            .css("font-weight", "bold")
+            .html("Go out for exercise!!");
         }
       }
     });
 }
+//local storage for city
+var cityhistory = [];
+function savecity() {
+  if (cityhistory.includes(whichcity)) {
+  } else {
+    cityhistory.push(whichcity);
+    //remove repeat city
+    cityhistory = [...new Set(cityhistory)];
+  }
+
+  localStorage.setItem("dataset", JSON.stringify(cityhistory));
+}
+
+//search button in page 1
+submitBtnEl.addEventListener("click", function () {
+  getExercises();
+  fetchweather();
+  $(".page1").css("display", "none");
+  $(".page2").css("display", "block");
+  $(function () {
+    $("#dialog").dialog();
+  });
+});
+//return button in page 2
+document.querySelector(".returnbtn").addEventListener("click", function () {
+  $(".page1").css("display", "block");
+  $(".page2").css("display", "none");
+});
