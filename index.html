@@ -20,7 +20,7 @@
         <h1 class="text-center mb-5 mt-5">Your Personal Workout Pal!</h1>
         <hr />
       </div>
-      <div class="container border">
+      <div class="container border page1">
         <p class="text-center text-">Please define the criteria of exercises you would like reccomended below. <small class="text-muted">You must select an option from each field!</small></p>
         <hr />
         <br>
@@ -79,11 +79,12 @@
           </div>
       </div>
       <div class="page2">
+      <button class="btn returnbtn" type="button">Return</button>
       <div id="exercise-container">
         <h2>Exercises:</h2>
         <!-- created exercises will go here -->
       </div>
-      <div class="weatherpart">
+      <div class="weatherpart" id="dialog" title="Weather Report:">
         <div class="search-city"></div>
         <div class="date"></div>
         <div class="todayweather"></div>
@@ -92,6 +93,15 @@
       </div>
       
     </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+   
+
+
     <script src="./develop/script.js"></script>
 </body>
 </html>
