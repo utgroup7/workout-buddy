@@ -179,7 +179,7 @@ function fetchweather() {
           );
           if (
             data.weather[0].main == "Rain" ||
-            data.weather[0].main == "Snow"
+            data.weather[0].main == "Snow" 
           ) {
             $(".gym-or-outside")
               .css("font-weight", "bold")
