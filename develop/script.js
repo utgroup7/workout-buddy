@@ -41,9 +41,17 @@ function clearCards() {
 
 // verifies userInputs from dropdown menu
 function getUserInput() {
-  exerciseType = exerciseChoiceEl.options[exerciseChoiceEl.selectedIndex].text.split(' ').join('_');
-  muscleType = muscleChoiceEl.options[muscleChoiceEl.selectedIndex].text.split(' ').join('_');
-  difficultyType = difficultyChoiceEl.options[difficultyChoiceEl.selectedIndex].text.split(' ').join('_');
+  exerciseType = exerciseChoiceEl.options[exerciseChoiceEl.selectedIndex].text
+    .split(" ")
+    .join("_");
+  muscleType = muscleChoiceEl.options[muscleChoiceEl.selectedIndex].text
+    .split(" ")
+    .join("_");
+  difficultyType = difficultyChoiceEl.options[
+    difficultyChoiceEl.selectedIndex
+  ].text
+    .split(" ")
+    .join("_");
   saveLocalStorage();
 }
 
@@ -66,7 +74,12 @@ function resetLocalStorage() {
 function getApi() {
   // takes selected options, and puts them into API call
   var requestUrl =
-    "https://api.api-ninjas.com/v1/exercises?&type=" + exerciseType + "&muscle=" + muscleType + "&difficulty=" + difficultyType;
+    "https://api.api-ninjas.com/v1/exercises?&type=" +
+    exerciseType +
+    "&muscle=" +
+    muscleType +
+    "&difficulty=" +
+    difficultyType;
 
   // fetch data with API key
   fetch(requestUrl, {
@@ -84,7 +97,9 @@ function getApi() {
     })
     .then(function (data) {
       if (data.length == 0) {
-        alert("Sorry, no exercises were found for your selection. Please change your search criteria!");
+        alert(
+          "Sorry, no exercises were found for your selection. Please change your search criteria!"
+        );
         resetLocalStorage();
         return;
       } else {
@@ -122,7 +137,8 @@ function getApi() {
           cardName.textContent = exerciseName;
           cardDifficulty.textContent = "Difficulty: " + exerciseDifficulty;
           cardMuscle.textContent = "Muscle group: " + exerciseMuscle;
-          cardEquipment.textContent = "Equipment required: " + exerciseEquipment;
+          cardEquipment.textContent =
+            "Equipment required: " + exerciseEquipment;
           cardType.textContent = "Type: " + exerciseType;
           cardInstuctions.textContent = "Instructions: " + exerciseInstructions;
         }
@@ -135,44 +151,53 @@ LoadStorage();
 function fetchweather() {
   var whichcity;
   whichcity = document.querySelector(".cityname").value.trim();
-  whichcity = whichcity[0].toUpperCase() + whichcity.slice(1);
-  fetch(
-    "https://api.openweathermap.org/data/2.5/weather?q=" +
-      whichcity +
-      //api key
-      "&appid=1c1db37f109216f4015898ae7bfc7c96"
-  )
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-      if (data.cod === "404") {
-        alert("City Not Found");
-      } else {
-        $(".search-city").css("font-weight", "bold").html(`${data.name}`);
-        var d = new Date();
-        $(".date")
-          .css("font-weight", "bold")
-          .html(`(${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()})`);
-        $(".todayweather")
-          .css("font-weight", "bold")
-          .html(`Today's weather:${data.weather[0].main}`);
-        $(".weathericon").attr(
-          "src",
-          "https://openweathermap.org/img/wn/" +
-            data.weather[0].icon +
-            "@2x.png"
-        );
-        if (data.weather[0].main == "Rain" || data.weather[0].main == "Snow") {
-          $(".gym-or-outside").css("font-weight", "bold").html("Go to the gym");
+  if (whichcity == "") {
+  } else {
+    whichcity = whichcity[0].toUpperCase() + whichcity.slice(1);
+    fetch(
+      "https://api.openweathermap.org/data/2.5/weather?q=" +
+        whichcity +
+        //api key
+        "&appid=1c1db37f109216f4015898ae7bfc7c96"
+    )
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data);
+        if (data.cod === "404") {
+          $(".search-city").css("font-weight", "bold").html("City Not Found");
         } else {
-          $(".gym-or-outside")
+          $(".search-city").css("font-weight", "bold").html(`${data.name}`);
+          var d = new Date();
+          $(".date")
             .css("font-weight", "bold")
-            .html("Go out for exercise!!");
+            .html(`(${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()})`);
+          $(".todayweather")
+            .css("font-weight", "bold")
+            .html(`Today's weather:${data.weather[0].main}`);
+          $(".weathericon").attr(
+            "src",
+            "https://openweathermap.org/img/wn/" +
+              data.weather[0].icon +
+              "@2x.png"
+          );
+          if (
+            data.weather[0].main == "Rain" ||
+            data.weather[0].main == "Snow"
+          ) {
+            $(".gym-or-outside")
+              .css("font-weight", "bold")
+              .html("Go to the gym");
+          } else {
+            $(".gym-or-outside")
+              .css("font-weight", "bold")
+              .html("Go out for exercise!!");
+          }
         }
-      }
-    });
+        showdialog();
+      });
+  }
 }
 
 //local storage for city
@@ -187,6 +212,19 @@ function savecity() {
 
   localStorage.setItem("dataset", JSON.stringify(cityhistory));
 }
+//show dialog
+function showdialog() {
+  $(".dialog").dialog();
+}
+
+//clear weather info!!!
+function clearweather() {
+  $(".search-city").html("");
+  $(".date").html("");
+  $(".todayweather").html("");
+  $(".weathericon").attr("src", "");
+  $(".gym-or-outside").html("");
+}
 
 // search button in page 1
 submitBtnEl.addEventListener("click", function () {
@@ -194,13 +232,11 @@ submitBtnEl.addEventListener("click", function () {
   fetchweather();
   $(".page1").css("display", "none");
   $(".page2").css("display", "block");
-  $(function () {
-    $("#dialog").dialog();
-  });
 });
 
 //return button in page 2
 document.querySelector(".returnbtn").addEventListener("click", function () {
   $(".page1").css("display", "block");
   $(".page2").css("display", "none");
+  clearweather();
 });

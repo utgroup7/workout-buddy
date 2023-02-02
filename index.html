@@ -11,20 +11,20 @@
     <title>Workout Pal</title>
 </head>
 <body>
-    <div class="">
+    <div class="container is-fluid hero">
         <h1 class="title has-text-centered">Your Personal Workout Pal!</h1>
         <hr />
       </div>
       <div class="container border page1">
-        <p class="has-text-centered">Please define the criteria of exercises you would like recommended below. <small class="text-muted">Feel free to make a selection</small></p>
+        <p class="text-center hero-body">Please define the criteria of exercises you would like recommended below. <small class="text-muted">Feel free to make a selection</small></p>
         <hr />
         <br>
         <br>
         <br>
         <div class="row d-flex level">
-            <div >
-                <h4>Exercise Type:</h4>
-                <select id="exercise-sel" class="form-select " aria-label="Default select example">
+            <div class="level">
+                <h4 class="">Exercise Type:</h4>
+                <select id="exercise-sel" class="form-select select is-medium " aria-label="Default select example">
                     <option selected></option>
                     <option value="cardio">Cardio</option>
                     <option value="olympic_weightlifting">Olympic Weightlifting</option>
@@ -34,9 +34,9 @@
                     <option value="strongman">Strong Man</option>
                   </select>
             </div>
-            <div >
+            <div class="level">
                 <h4>Muscle Group:</h4>
-                <select id="muscle-sel" class="">
+                <select id="muscle-sel" class="select is-medium">
                     <option selected></option>
                     <option value="biceps">Biceps</option>
                     <option value="calves">Calves</option>
@@ -51,9 +51,9 @@
                     <option value="triceps">Triceps</option>
                   </select>
             </div>
-            <div>
+            <div class="level">
               <h4>Difficulty Level:</h4>
-              <select id="difficulty-sel" class="">
+              <select id="difficulty-sel" class="select is-medium">
                   <option selected></option>
                   <option value="beginner">Beginner</option>
                   <option value="intermediate">Intermediate</option>
@@ -68,7 +68,7 @@
             <div>
               <div class="input-group mb-3 mt-5">
                   <button class="btn btn-outline-secondary" type="button" id="submit-btn">Submit</button>
-                  <input type="text" class="form-control cityname" placeholder="Input city to check if weather permits outdoor activities" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                  <input type="text" class="form-control cityname" placeholder="Input city" aria-label="Example text with button addon" aria-describedby="button-addon1">
                 </div>
             </div>
           </div>
@@ -79,7 +79,7 @@
         <h2>Exercises:</h2>
         <!-- created exercises will go here -->
       </div>
-      <div class="weatherpart" id="dialog" title="Weather Report:">
+      <div class="weatherpart dialog" title="Weather Report:">
         <div class="search-city"></div>
         <div class="date"></div>
         <div class="todayweather"></div>
