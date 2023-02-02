@@ -192,7 +192,7 @@ function fetchweather() {
           } else {
             $(".gym-or-outside")
               .css("font-weight", "bold")
-              .html("Go out for exercise!!");
+              .html("Go out and exercise!");
           }
         }
         showdialog();
