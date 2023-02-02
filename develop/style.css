@@ -51,7 +51,7 @@ body {
   padding: 2px;
 }
 /*settings for dialog window*/
-#dialog {
+.dialog {
   background-color: aliceblue;
 }
 .search-city {

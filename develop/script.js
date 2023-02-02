@@ -214,7 +214,7 @@ function savecity() {
 }
 //show dialog
 function showdialog() {
-  $("#dialog").dialog();
+  $(".dialog").dialog();
 }
 
 //clear weather info!!!
