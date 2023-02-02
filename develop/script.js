@@ -18,6 +18,8 @@ function LoadStorage() {
     muscleType = savedWorkouts[0].muscle;
     difficultyType = savedWorkouts[0].difficulty;
     getApi();
+  } else {
+    return;
   }
 }
 
@@ -37,10 +39,9 @@ function clearCards() {
 
 // verifies userInputs from dropdown menu
 function getUserInput() {
-  exerciseType = exerciseChoiceEl.options[exerciseChoiceEl.selectedIndex].text;
-  muscleType = muscleChoiceEl.options[muscleChoiceEl.selectedIndex].text;
-  difficultyType =
-    difficultyChoiceEl.options[difficultyChoiceEl.selectedIndex].text;
+  exerciseType = exerciseChoiceEl.options[exerciseChoiceEl.selectedIndex].text.split(' ').join('_');
+  muscleType = muscleChoiceEl.options[muscleChoiceEl.selectedIndex].text.split(' ').join('_');
+  difficultyType = difficultyChoiceEl.options[difficultyChoiceEl.selectedIndex].text.split(' ').join('_');
   // functionality to check if all options are selected
   if (exerciseType === "" && muscleType === "" && difficultyType === "") {
     console.log("Please choose at least one option");
@@ -68,12 +69,7 @@ function resetLocalStorage() {
 function getApi() {
   // takes selected options, and puts them into API call
   var requestUrl =
-    "https://api.api-ninjas.com/v1/exercises?&type=" +
-    exerciseType +
-    "&muscle=" +
-    muscleType +
-    "&difficulty=" +
-    difficultyType;
+    "https://api.api-ninjas.com/v1/exercises?&type=" + exerciseType + "&muscle=" + muscleType + "&difficulty=" + difficultyType;
 
   // fetch data with API key
   fetch(requestUrl, {
@@ -175,6 +171,7 @@ function fetchweather() {
       }
     });
 }
+
 //local storage for city
 var cityhistory = [];
 function savecity() {
@@ -188,7 +185,7 @@ function savecity() {
   localStorage.setItem("dataset", JSON.stringify(cityhistory));
 }
 
-//search button in page 1
+// search button in page 1
 submitBtnEl.addEventListener("click", function () {
   getExercises();
   fetchweather();
@@ -198,6 +195,7 @@ submitBtnEl.addEventListener("click", function () {
     $("#dialog").dialog();
   });
 });
+
 //return button in page 2
 document.querySelector(".returnbtn").addEventListener("click", function () {
   $(".page1").css("display", "block");
