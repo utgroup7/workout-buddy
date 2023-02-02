@@ -2,12 +2,6 @@
   padding: 5px;
 }
 /*initial page setting*/
-body {
-  background: linear-gradient(
-    rgb(156, 10, 161) 1%,
-    rgba(231, 102, 236, 0.21) 100%
-  );
-}
 .page1 {
   display: block;
 }
@@ -48,10 +42,10 @@ body {
   font-size: 20px;
   background-color: rgb(42, 235, 193);
   border: 3px solid black;
-  padding: 2px;
+  padding-top: 2px;
 }
 /*settings for dialog window*/
-.dialog {
+#dialog {
   background-color: aliceblue;
 }
 .search-city {
