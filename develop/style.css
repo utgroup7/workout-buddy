@@ -32,7 +32,7 @@
   font-weight: bold;
   margin: 10px;
   padding-right: 50px;
-  max-width: 45%;
+  width: 45%;
   max-height: 45%;
   border: 3px solid black;
   background-color: white;
@@ -53,3 +53,14 @@
   font-size: 25px;
 }
 /**/
+
+/*page adjustments for small screen*/
+@media screen and (max-width: 760px) {
+  #exercise-container div {
+    width: 95%;
+    height: auto;
+  }
+  .returnbtn {
+    width: 50%;
+  }
+}
