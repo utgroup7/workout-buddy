@@ -44,11 +44,6 @@ function getUserInput() {
   exerciseType = exerciseChoiceEl.options[exerciseChoiceEl.selectedIndex].text.split(' ').join('_');
   muscleType = muscleChoiceEl.options[muscleChoiceEl.selectedIndex].text.split(' ').join('_');
   difficultyType = difficultyChoiceEl.options[difficultyChoiceEl.selectedIndex].text.split(' ').join('_');
-  // functionality to check if all options are selected
-  if (exerciseType === "" && muscleType === "" && difficultyType === "") {
-    console.log("Please choose at least one option");
-    return;
-  }
   saveLocalStorage();
 }
 
