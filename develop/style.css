@@ -25,7 +25,7 @@
   flex-wrap: wrap;
   margin-top: 20px;
   justify-content: space-around;
-  background-color: rgb(32, 144, 235);
+  background-color: #3e8ed0;
 }
 #exercise-container div {
   display: inline-block;
