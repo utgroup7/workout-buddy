@@ -18,8 +18,7 @@ function LoadStorage() {
     muscleType = savedWorkouts[0].muscle;
     difficultyType = savedWorkouts[0].difficulty;
     getApi();
-    $(".page1").css("display", "none");
-    $(".page2").css("display", "block");
+    
   } else {
     return;
   }
