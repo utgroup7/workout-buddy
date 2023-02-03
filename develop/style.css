@@ -1,16 +1,31 @@
 * {
-  padding: 5px;
+  padding: 5px; 
+} 
+#titlebox {
+  background-image: linear-gradient(to right, red , blue) !important;
+  
 }
 /*initial page setting*/
 .page1 {
   display: block;
+}
+h1 {
+  margin-bottom: 0px !important;
+  align-content: center;
+  margin-top: 18px;
+  font-size: 38px !important;
+}
+
+h4 {
+  font-size: 18px;
+  font-weight: ;
 }
 .page2 {
   display: none;
 }
 /*setting's for return button in page 2*/
 .returnbtn {
-  background-color: rgb(7, 124, 241);
+  background-color: rgb(30, 190, 102);
   color: aliceblue;
   margin: 15px;
   width: 10%;
@@ -26,7 +41,9 @@
   margin-top: 20px;
   justify-content: space-around;
   background-color: #3e8ed0;
+ 
 }
+
 #exercise-container div {
   display: inline-block;
   font-weight: bold;
