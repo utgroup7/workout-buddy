@@ -26,8 +26,7 @@ h1 {
 }
 
 h4 {
-  font-size: 18px;
-  font-weight: ;
+  font-size: 16px;
 }
 .page2 {
   display: none;
@@ -75,6 +74,7 @@ h4 {
   border-radius: 5px;
   padding-top: 2px;
   justify-content: center;
+  margin-left: 40px;
   
 }
 /*settings for dialog window*/
