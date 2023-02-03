@@ -1,9 +1,16 @@
 * {
   padding: 5px; 
 } 
+html, body {
+  height: 100%;
+}
+
+.full-height {
+height: 100%;
+}
 
 #titlebox {
-  background-image: linear-gradient(to right, red , blue) !important;
+  background-image: linear-gradient(to top left, red , blue) !important;
   
 }
 /*initial page setting*/
