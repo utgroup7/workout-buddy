@@ -116,7 +116,7 @@ function getApi() {
 
           // create boxes for exercises
           var exerciseCard = document.createElement("div");
-          var cardName = document.createElement("p4");
+          var cardName = document.createElement("h4");
           var cardDifficulty = document.createElement("p");
           var cardMuscle = document.createElement("p");
           var cardEquipment = document.createElement("p");

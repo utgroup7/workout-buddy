@@ -7,6 +7,7 @@ html, body {
 
 .full-height {
 height: 100%;
+display: flex;
 }
 
 #titlebox {
@@ -63,7 +64,8 @@ h4 {
   background-color: white;
 }
 /*adjusted padding to create space between text and border box CB*/
-#exercise-container div p4 {
+#exercise-container div h4 {
+  display: flex;
   font-weight: bold;
   color: black;
   font-size: 20px;
@@ -72,6 +74,7 @@ h4 {
   border: 3px solid black;
   border-radius: 5px;
   padding-top: 2px;
+  justify-content: center;
   
 }
 /*settings for dialog window*/
