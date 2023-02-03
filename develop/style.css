@@ -1,6 +1,7 @@
 * {
   padding: 5px; 
 } 
+
 #titlebox {
   background-image: linear-gradient(to right, red , blue) !important;
   
@@ -25,14 +26,13 @@ h4 {
 }
 /*setting's for return button in page 2*/
 .returnbtn {
-  background-color: rgb(30, 190, 102);
-  color: aliceblue;
+  color: rgb(255, 240, 243);
   margin: 15px;
   width: 10%;
   text-align: center;
   border-radius: 10px;
   cursor: pointer;
-  margin-left: 0px;
+  margin-left: 4px;
 }
 /*adjust the style for result boxes*/
 #exercise-container {
@@ -40,7 +40,7 @@ h4 {
   flex-wrap: wrap;
   margin-top: 20px;
   justify-content: space-around;
-  background-color: #3e8ed0;
+  background-image: none;
  
 }
 
@@ -61,7 +61,7 @@ h4 {
   color: black;
   font-size: 20px;
   padding-bottom: 2px;
-  background-color: rgb(42, 235, 193);
+  background-color: rgb(233, 221, 56);
   border: 3px solid black;
   border-radius: 5px;
   padding-top: 1px;
@@ -75,6 +75,14 @@ h4 {
   font-size: 25px;
 }
 /**/
+input {
+  height: 40px; 
+  width: 250px;
+}
+
+select {
+  width: 250px;
+}
 
 /*page adjustments for small screen*/
 @media screen and (max-width: 760px) {
