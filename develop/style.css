@@ -10,7 +10,7 @@ height: 100%;
 }
 
 #titlebox {
-  background-image: linear-gradient(to top right, red , blue) !important;
+  background-image: linear-gradient(to top right,rgb(201, 25, 145), rgb(46, 35, 126)) !important;
   
 }
 /*initial page setting*/
