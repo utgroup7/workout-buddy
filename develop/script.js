@@ -102,7 +102,7 @@ function getApi() {
         resetLocalStorage();
         return;
       } else {
-        console.log(data);
+        // console.log(data);
 
         // loop through 8 results, and display them
         for (var i = 0; i < 8; i++) {
@@ -161,7 +161,9 @@ function fetchweather() {
         return response.json();
       })
       .then(function (data) {
+
         console.log(data);
+
         if (data.cod === "404") {
           $(".search-city").css("font-weight", "bold").html("City Not Found");
         } else {
@@ -180,8 +182,10 @@ function fetchweather() {
               "@2x.png"
           );
           if (
+            data.main.temp < 283.15 ||
             data.weather[0].main == "Rain" ||
-            data.weather[0].main == "Snow"
+            data.weather[0].main == "Snow" 
+            
           ) {
             $(".gym-or-outside")
               .css("font-weight", "bold")
@@ -191,7 +195,9 @@ function fetchweather() {
               .css("font-weight", "bold")
               .html("Go out and exercise!");
           }
+          
         }
+        
         showdialog();
       });
   }
