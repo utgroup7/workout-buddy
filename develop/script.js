@@ -102,7 +102,7 @@ function getApi() {
         resetLocalStorage();
         return;
       } else {
-        // console.log(data);
+        console.log(data);
 
         // loop through 8 results, and display them
         for (var i = 0; i < 8; i++) {
