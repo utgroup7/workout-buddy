@@ -18,7 +18,7 @@ function LoadStorage() {
     muscleType = savedWorkouts[0].muscle;
     difficultyType = savedWorkouts[0].difficulty;
     getApi();
-    
+
   } else {
     return;
   }
@@ -145,8 +145,6 @@ function getApi() {
     });
 }
 
-LoadStorage();
-
 function fetchweather() {
   var whichcity;
   whichcity = document.querySelector(".cityname").value.trim();
@@ -239,3 +237,5 @@ document.querySelector(".returnbtn").addEventListener("click", function () {
   $(".page2").css("display", "none");
   clearweather();
 });
+
+LoadStorage();
