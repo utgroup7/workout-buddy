@@ -151,7 +151,7 @@ h4 {
   }
   /*settings for dialog window*/
   #dialog {
-    background-color: aliceblue;
+    background-color: rgb(229, 172, 198);
   }
   .search-city {
     font-weight: bold;
