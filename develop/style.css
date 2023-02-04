@@ -70,7 +70,113 @@ h4 {
   font-size: 20px;
   padding-bottom: 2px;
   background-color: rgb(133, 91, 247);
-  border: 3px solid black;
+  border: 3px solid black;* {
+    padding: 5px; 
+  } 
+  html, body {
+    height: 100%;
+  }
+  
+  .full-height {
+  height: 100%;
+  }
+  
+  #titlebox {
+    background-image: linear-gradient(to top right,rgb(201, 25, 145), rgb(46, 35, 126)) !important;
+    
+  }
+  /*initial page setting*/
+  .page1 {
+    display: block;
+  }
+  h1 {
+    margin-bottom: 0px !important;
+    align-content: center;
+    margin-top: 18px;
+    font-size: 70px !important;
+  }
+  
+  h4 {
+    font-size: 18px;
+    font-weight: ;
+  }
+  .page2 {
+    display: none;
+  }
+  /*setting's for return button in page 2*/
+  .returnbtn {
+    color: rgb(255, 240, 243);
+    margin: 15px;
+    width: 10%;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 4px;
+  }
+  /*adjust the style for result boxes*/
+  #exercise-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    justify-content: space-around;
+    background-image: none;
+   
+  }
+  
+  #exercise-container div {
+    display: inline-block;
+    font-weight: bold;
+    margin: 10px;
+    padding-right: 50px;
+    width: 45%;
+    max-height: 45%;
+    border: 3px solid black;
+    border-radius: 10px;
+    background-color: white;
+  }
+  /*adjusted padding to create space between text and border box CB*/
+  #exercise-container div h4 {
+    font-weight: bold;
+    color: black;
+    font-size: 20px;
+    padding-bottom: 2px;
+    background-color: rgb(196, 99, 237);
+    border: 3px solid black;
+    border-radius: 5px;
+    padding-top: 2px;
+    margin-left: 30px;
+    justify-content: center;
+    text-align: center;
+    
+  }
+  /*settings for dialog window*/
+  #dialog {
+    background-color: aliceblue;
+  }
+  .search-city {
+    font-weight: bold;
+    font-size: 25px;
+  }
+  /**/
+  input {
+    height: 40px; 
+    width: 250px;
+  }
+  
+  select {
+    width: 250px;
+  }
+  
+  /*page adjustments for small screen*/
+  @media screen and (max-width: 760px) {
+    #exercise-container div {
+      width: 95%;
+      height: auto;
+    }
+    .returnbtn {
+      width: 50%;
+    }
+  }
   border-radius: 5px;
   padding-top: 2px;
   justify-content: center;
