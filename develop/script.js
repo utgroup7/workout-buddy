@@ -98,9 +98,10 @@ function getApi() {
     })
     .then(function (data) {
       if (data.length == 0) {
-        alert(
-          "Sorry, no exercises were found for your selection. Please change your search criteria!"
-        );
+        var noWorkoutsText = document.createElement("p");
+        noWorkoutsText.setAttribute("id", "no-workouts");
+        noWorkoutsText.textContent = "Sorry, no workouts found matching your search criteria! Please adjust your search.";
+        exerciseDisplay.appendChild(noWorkoutsText);
         resetLocalStorage();
         return;
       } else {
