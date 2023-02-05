@@ -71,7 +71,7 @@ h4 {
   padding-bottom: 2px;
   background-color: rgb(133, 91, 247);
   border: 3px solid black;* {
-    padding: 5px; 
+  padding: 5px; 
   } 
   html, body {
     height: 100%;
@@ -183,6 +183,7 @@ h4 {
   margin-left: 40px;
   
 }
+
 /*settings for dialog window*/
 #dialog {
   background-color: aliceblue;

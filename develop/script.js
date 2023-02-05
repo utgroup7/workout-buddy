@@ -3,6 +3,7 @@ var exerciseChoiceEl = document.getElementById("exercise-sel");
 var muscleChoiceEl = document.getElementById("muscle-sel");
 var difficultyChoiceEl = document.getElementById("difficulty-sel");
 var submitBtnEl = document.getElementById("submit-btn");
+var loadBtnEl = document.getElementById("load-workout-btn");
 var exercisesAPIKey = "k+TTZg5W7abWENrPVaEK3A==zHLpPbG3n2YNutwf";
 var exerciseDisplay = document.getElementById("exercise-container");
 var exerciseType = "";
@@ -18,7 +19,8 @@ function LoadStorage() {
     muscleType = savedWorkouts[0].muscle;
     difficultyType = savedWorkouts[0].difficulty;
     getApi();
-
+    $(".page1").css("display", "none");
+    $(".page2").css("display", "block");
   } else {
     return;
   }
@@ -244,4 +246,5 @@ document.querySelector(".returnbtn").addEventListener("click", function () {
   clearweather();
 });
 
-LoadStorage();
+// Loads local storage workouts
+loadBtnEl.addEventListener("click", LoadStorage);
