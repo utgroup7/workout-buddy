@@ -3,6 +3,7 @@ var exerciseChoiceEl = document.getElementById("exercise-sel");
 var muscleChoiceEl = document.getElementById("muscle-sel");
 var difficultyChoiceEl = document.getElementById("difficulty-sel");
 var submitBtnEl = document.getElementById("submit-btn");
+var loadBtnEl = document.getElementById("load-workout-btn");
 var exercisesAPIKey = "k+TTZg5W7abWENrPVaEK3A==zHLpPbG3n2YNutwf";
 var exerciseDisplay = document.getElementById("exercise-container");
 var exerciseType = "";
@@ -18,7 +19,8 @@ function LoadStorage() {
     muscleType = savedWorkouts[0].muscle;
     difficultyType = savedWorkouts[0].difficulty;
     getApi();
-
+    $(".page1").css("display", "none");
+    $(".page2").css("display", "block");
   } else {
     return;
   }
@@ -96,9 +98,10 @@ function getApi() {
     })
     .then(function (data) {
       if (data.length == 0) {
-        alert(
-          "Sorry, no exercises were found for your selection. Please change your search criteria!"
-        );
+        var noWorkoutsText = document.createElement("p");
+        noWorkoutsText.setAttribute("id", "no-workouts");
+        noWorkoutsText.textContent = "Sorry, no workouts found matching your search criteria! Please adjust your search.";
+        exerciseDisplay.appendChild(noWorkoutsText);
         resetLocalStorage();
         return;
       } else {
@@ -244,4 +247,5 @@ document.querySelector(".returnbtn").addEventListener("click", function () {
   clearweather();
 });
 
-LoadStorage();
+// Loads local storage workouts
+loadBtnEl.addEventListener("click", LoadStorage);
