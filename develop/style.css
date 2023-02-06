@@ -173,21 +173,6 @@ h4 {
     width: 250px;
   }
   
-  /*page adjustments for small screen*/
-  @media screen and (max-width: 760px) {
-    #exercise-container div {
-      width: 95%;
-      height: auto;
-    }
-    .returnbtn {
-      width: 50%;
-    }
-  }
-  border-radius: 5px;
-  padding-top: 2px;
-  justify-content: center;
-  margin-left: 40px; 
-}
 
 /*settings for dialog window*/
 #dialog {
@@ -217,3 +202,11 @@ select {
     width: 50%;
   }
 }
+
+  /*Not sure what this is for*/
+/* }
+border-radius: 5px;
+padding-top: 2px;
+justify-content: center;
+margin-left: 40px; 
+} */
