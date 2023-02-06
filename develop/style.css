@@ -70,9 +70,10 @@ h4 {
   font-size: 20px;
   padding-bottom: 2px;
   background-color: rgb(133, 91, 247);
-  border: 3px solid black;* {
-    padding: 5px; 
-  } 
+  border: 3px solid black; 
+  padding: 5px; 
+  }
+
   html, body {
     height: 100%;
   }
@@ -98,7 +99,7 @@ h4 {
   
   h4 {
     font-size: 18px;
-    font-weight: ;
+    
   }
   .page2 {
     display: none;
@@ -120,6 +121,7 @@ h4 {
     margin-top: 20px;
     justify-content: space-around;
     background-image: none;
+    box-shadow: 20rem;
    
   }
   
@@ -176,13 +178,9 @@ h4 {
     .returnbtn {
       width: 50%;
     }
-  }
-  border-radius: 5px;
-  padding-top: 2px;
-  justify-content: center;
-  margin-left: 40px;
   
 }
+
 /*settings for dialog window*/
 #dialog {
   background-color: aliceblue;
