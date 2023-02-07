@@ -204,10 +204,7 @@ select {
   }
 }
 
-  /*Not sure what this is for*/
-/* }
-border-radius: 5px;
-padding-top: 2px;
-justify-content: center;
-margin-left: 40px; 
-} */
+#submit-btn {
+  width: 175px;
+}
+
