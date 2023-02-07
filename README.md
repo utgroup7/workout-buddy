@@ -50,7 +50,7 @@ More to come
 
 ## Screenshot
 
-![Screenshot]("placeholder")
+![Screenshot](./develop/images/project.png)
 
 # Link to Deployed site
 
