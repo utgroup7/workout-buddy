@@ -3,6 +3,7 @@ var exerciseChoiceEl = document.getElementById("exercise-sel");
 var muscleChoiceEl = document.getElementById("muscle-sel");
 var difficultyChoiceEl = document.getElementById("difficulty-sel");
 var submitBtnEl = document.getElementById("submit-btn");
+var loadBtnEl = document.getElementById("load-workout-btn");
 var exercisesAPIKey = "k+TTZg5W7abWENrPVaEK3A==zHLpPbG3n2YNutwf";
 var exerciseDisplay = document.getElementById("exercise-container");
 var exerciseType = "";
@@ -18,6 +19,10 @@ function LoadStorage() {
     muscleType = savedWorkouts[0].muscle;
     difficultyType = savedWorkouts[0].difficulty;
     getApi();
+    $(".page1").css("display", "none");
+    $(".page2").css("display", "block");
+  } else {
+    return;
   }
 }
 
@@ -37,15 +42,17 @@ function clearCards() {
 
 // verifies userInputs from dropdown menu
 function getUserInput() {
-  exerciseType = exerciseChoiceEl.options[exerciseChoiceEl.selectedIndex].text;
-  muscleType = muscleChoiceEl.options[muscleChoiceEl.selectedIndex].text;
-  difficultyType =
-    difficultyChoiceEl.options[difficultyChoiceEl.selectedIndex].text;
-  // functionality to check if all options are selected
-  if (exerciseType === "" && muscleType === "" && difficultyType === "") {
-    console.log("Please choose at least one option");
-    return;
-  }
+  exerciseType = exerciseChoiceEl.options[exerciseChoiceEl.selectedIndex].text
+    .split(" ")
+    .join("_");
+  muscleType = muscleChoiceEl.options[muscleChoiceEl.selectedIndex].text
+    .split(" ")
+    .join("_");
+  difficultyType = difficultyChoiceEl.options[
+    difficultyChoiceEl.selectedIndex
+  ].text
+    .split(" ")
+    .join("_");
   saveLocalStorage();
 }
 
@@ -90,91 +97,117 @@ function getApi() {
       }
     })
     .then(function (data) {
-      console.log(data);
-
-      // loop through 8 results, and display them
-      for (var i = 0; i < 8; i++) {
-        // create variables for API data
-        var exerciseName = data[i].name;
-        var exerciseDifficulty = data[i].difficulty;
-        var exerciseMuscle = data[i].muscle;
-        var exerciseEquipment = data[i].equipment;
-        var exerciseType = data[i].type;
-        var exerciseInstructions = data[i].instructions;
-
-        // create boxes for exercises
-        var exerciseCard = document.createElement("div");
-        var cardName = document.createElement("p4");
-        var cardDifficulty = document.createElement("p");
-        var cardMuscle = document.createElement("p");
-        var cardEquipment = document.createElement("p");
-        var cardType = document.createElement("p");
-        var cardInstuctions = document.createElement("p");
-
-        // append text to card, and card to container
-        exerciseCard.appendChild(cardName);
-        exerciseCard.appendChild(cardDifficulty);
-        exerciseCard.appendChild(cardMuscle);
-        exerciseCard.appendChild(cardEquipment);
-        exerciseCard.appendChild(cardType);
-        exerciseCard.appendChild(cardInstuctions);
-        exerciseDisplay.appendChild(exerciseCard);
-
-        // add text from API to created elements
-        cardName.textContent = exerciseName;
-        cardDifficulty.textContent = "Difficulty: " + exerciseDifficulty;
-        cardMuscle.textContent = "Muscle group: " + exerciseMuscle;
-        cardEquipment.textContent = "Equipment required: " + exerciseEquipment;
-        cardType.textContent = "Type: " + exerciseType;
-        cardInstuctions.textContent = "Instructions: " + exerciseInstructions;
-      }
-    });
-}
-
-LoadStorage();
-
-function fetchweather() {
-  var whichcity;
-  whichcity = document.querySelector(".cityname").value.trim();
-  whichcity = whichcity[0].toUpperCase() + whichcity.slice(1);
-  fetch(
-    "https://api.openweathermap.org/data/2.5/weather?q=" +
-      whichcity +
-      //api key
-      "&appid=1c1db37f109216f4015898ae7bfc7c96"
-  )
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-      if (data.cod === "404") {
-        alert("City Not Found");
+      if (data.length == 0) {
+        var noWorkoutsText = document.createElement("p");
+        noWorkoutsText.setAttribute("id", "no-workouts");
+        noWorkoutsText.textContent = "Sorry, no workouts found matching your search criteria! Please adjust your search.";
+        exerciseDisplay.appendChild(noWorkoutsText);
+        resetLocalStorage();
+        return;
       } else {
-        $(".search-city").css("font-weight", "bold").html(`${data.name}`);
-        var d = new Date();
-        $(".date")
-          .css("font-weight", "bold")
-          .html(`(${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()})`);
-        $(".todayweather")
-          .css("font-weight", "bold")
-          .html(`Today's weather:${data.weather[0].main}`);
-        $(".weathericon").attr(
-          "src",
-          "https://openweathermap.org/img/wn/" +
-            data.weather[0].icon +
-            "@2x.png"
-        );
-        if (data.weather[0].main == "Rain" || data.weather[0].main == "Snow") {
-          $(".gym-or-outside").css("font-weight", "bold").html("Go to the gym");
-        } else {
-          $(".gym-or-outside")
-            .css("font-weight", "bold")
-            .html("Go out for exercise!!");
+        console.log(data);
+
+        // loop through 8 results, and display them
+        for (var i = 0; i < 8; i++) {
+          // create variables for API data
+          var exerciseName = data[i].name;
+          var exerciseDifficulty = data[i].difficulty;
+          var exerciseMuscle = data[i].muscle;
+          var exerciseEquipment = data[i].equipment;
+          var exerciseType = data[i].type;
+          var exerciseInstructions = data[i].instructions;
+
+          // create boxes for exercises
+          var exerciseCard = document.createElement("div");
+          var cardName = document.createElement("h4");
+          var cardDifficulty = document.createElement("p");
+          var cardMuscle = document.createElement("p");
+          var cardEquipment = document.createElement("p");
+          var cardType = document.createElement("p");
+          var cardInstuctions = document.createElement("p");
+
+          // append text to card, and card to container
+          exerciseCard.appendChild(cardName);
+          exerciseCard.appendChild(cardDifficulty);
+          exerciseCard.appendChild(cardMuscle);
+          exerciseCard.appendChild(cardEquipment);
+          exerciseCard.appendChild(cardType);
+          exerciseCard.appendChild(cardInstuctions);
+          exerciseDisplay.appendChild(exerciseCard);
+
+          // add text from API to created elements
+          cardName.textContent = exerciseName;
+          cardDifficulty.textContent = "Difficulty: " + exerciseDifficulty;
+          cardMuscle.textContent = "Muscle group: " + exerciseMuscle;
+          cardEquipment.textContent =
+            "Equipment required: " + exerciseEquipment;
+          cardType.textContent = "Type: " + exerciseType;
+          cardInstuctions.textContent = "Instructions: " + exerciseInstructions;
         }
       }
     });
 }
+
+function fetchweather() {
+  var whichcity;
+  whichcity = document.querySelector(".cityname").value.trim();
+  if (whichcity == "") {
+  } else {
+    whichcity = whichcity[0].toUpperCase() + whichcity.slice(1);
+    fetch(
+      "https://api.openweathermap.org/data/2.5/weather?q=" +
+        whichcity +
+        //api key
+        "&appid=1c1db37f109216f4015898ae7bfc7c96"
+    )
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+
+        console.log(data);
+
+        if (data.cod === "404") {
+          $(".search-city").css("font-weight", "bold").html("City Not Found");
+        } else {
+          $(".search-city").css("font-weight", "bold").html(`${data.name}`);
+          var d = new Date();
+          $(".date")
+            .css("font-weight", "bold")
+            .html(`(${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()})`);
+          $(".todayweather")
+            .css("font-weight", "bold")
+            .html(`Today's weather:${data.weather[0].main}`);
+          $(".weathericon").attr(
+            "src",
+            "https://openweathermap.org/img/wn/" +
+              data.weather[0].icon +
+              "@2x.png");
+          var todaytemp= ((data.main.temp)-273.15)
+          todaytemp=todaytemp.toFixed(0)
+          $('.temperature').css('font-weight','bold').html(`Today's Temperature is ${todaytemp}`)
+          if (
+            data.main.temp < 283.15 ||
+            data.weather[0].main == "Rain" ||
+            data.weather[0].main == "Snow" 
+            
+          ) {
+            $(".gym-or-outside")
+              .css("font-weight", "bold")
+              .html("Go to the gym");
+          } else {
+            $(".gym-or-outside")
+              .css("font-weight", "bold")
+              .html("Go out and exercise!");
+          }
+          
+        }
+        
+        showdialog();
+      });
+  }
+}
+
 //local storage for city
 var cityhistory = [];
 function savecity() {
@@ -187,19 +220,35 @@ function savecity() {
 
   localStorage.setItem("dataset", JSON.stringify(cityhistory));
 }
+//show dialog
+function showdialog() {
+  $(".dialog").dialog();
+}
 
-//search button in page 1
+//clear weather info!!!
+function clearweather() {
+  $(".search-city").html("");
+  $(".date").html("");
+  $(".todayweather").html("");
+  $(".weathericon").attr("src", "");
+  $('.temperature').html("")
+  $(".gym-or-outside").html("");
+}
+
+// search button in page 1
 submitBtnEl.addEventListener("click", function () {
   getExercises();
   fetchweather();
   $(".page1").css("display", "none");
   $(".page2").css("display", "block");
-  $(function () {
-    $("#dialog").dialog();
-  });
 });
+
 //return button in page 2
 document.querySelector(".returnbtn").addEventListener("click", function () {
   $(".page1").css("display", "block");
   $(".page2").css("display", "none");
+  clearweather();
 });
+
+// Loads local storage workouts
+loadBtnEl.addEventListener("click", LoadStorage);
