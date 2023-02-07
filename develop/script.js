@@ -182,8 +182,10 @@ function fetchweather() {
             "src",
             "https://openweathermap.org/img/wn/" +
               data.weather[0].icon +
-              "@2x.png"
-          );
+              "@2x.png");
+          var todaytemp= ((data.main.temp)-273.15)
+          todaytemp=todaytemp.toFixed(0)
+          $('.temperature').css('font-weight','bold').html(`Today's Temperature is ${todaytemp}`)
           if (
             data.main.temp < 283.15 ||
             data.weather[0].main == "Rain" ||
@@ -229,6 +231,7 @@ function clearweather() {
   $(".date").html("");
   $(".todayweather").html("");
   $(".weathericon").attr("src", "");
+  $('.temperature').html("")
   $(".gym-or-outside").html("");
 }
 
