@@ -31,7 +31,7 @@ Links to the deployed application and the GitHub repository.
 
 ## Description
 
-More to come
+Welcome to our first group assignment! Workout Buddy is a website designed for individuals looking to improve their physical fitness. The website offers a platform for users to find workouts, set goals and see the weather for that day. Whether you're a beginner looking to start a fitness routine or an experienced gym-goer looking for a workout buddy, Workout Buddy has something for everyone. The site offers a comprehensive and customizable approach to fitness that is designed to help users reach their goals and lead a healthier, more active lifestyle. 
 
 ## Screenshot
 
